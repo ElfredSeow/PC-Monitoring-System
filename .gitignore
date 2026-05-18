@@ -1,0 +1,25 @@
+# .NET Core / .NET 5+
+[Bb]in/
+[Oo]bj/
+[Pp]ublish/
+*.user
+*.userosscache
+*.sln.docstates
+
+# Visual Studio files
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.dll
+*.exe
+*.pdb
+
+# Certificates
+*.cer
+*.pfx
+*.snk
+
+# PowerShell
+*.log
