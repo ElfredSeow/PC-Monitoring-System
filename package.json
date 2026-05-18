@@ -2,8 +2,12 @@
   "name": "pc-component-monitoring",
   "version": "1.0.0",
   "description": "A lightweight Windows desktop application for real-time monitoring of PC hardware components.",
-  "main": "index.js",
+  "main": "cli.js",
+  "bin": {
+    "pc-monitor": "cli.js"
+  },
   "scripts": {
+    "postinstall": "dotnet build -c Release",
     "build": "dotnet build -c Release",
     "start": "dotnet run --project MonitorApp/MonitorApp.csproj",
     "publish": "dotnet publish MonitorApp/MonitorApp.csproj -c Release -r win-x64 --self-contained true /p:PublishSingleFile=true /p:PublishTrimmed=true"

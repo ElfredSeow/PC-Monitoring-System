@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # PC Component Monitoring
 
 A lightweight, high-performance Windows desktop application for real-time monitoring of PC hardware components. It features a modern, dark UI and an optional overlay mode.
@@ -39,3 +40,7 @@ A lightweight, high-performance Windows desktop application for real-time monito
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+=======
+# PC-Monitoring-System
+A lightweight, high-performance Windows desktop application for real-time monitoring of PC hardware components. It features a modern, dark UI and an optional overlay mode.
+>>>>>>> d21e5ed917da0dab7e6545174f78f08d0b175f6d
