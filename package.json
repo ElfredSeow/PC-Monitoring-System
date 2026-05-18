@@ -1,10 +1,10 @@
 {
-  "name": "vitalsdash",
+  "name": "vitaldash",
   "version": "1.0.0",
   "description": "A high-performance Windows hardware monitor with a sleek overlay mode.",
   "main": "cli.js",
   "bin": {
-    "vitals-dash": "cli.js"
+    "vitaldash": "cli.js"
   },
   "scripts": {
     "postinstall": "dotnet build -c Release",
