@@ -1,7 +1,6 @@
-<<<<<<< HEAD
-# PC Component Monitoring
+# VitalsDash
 
-A lightweight, high-performance Windows desktop application for real-time monitoring of PC hardware components. It features a modern, dark UI and an optional overlay mode.
+A high-performance Windows hardware monitor with a sleek overlay mode.
 
 ## Features
 
@@ -16,14 +15,19 @@ A lightweight, high-performance Windows desktop application for real-time monito
 - **Draggable Overlay**: Move the overlay anywhere on your screen (hold Alt + Left Click).
 - **Tray Icon**: Minimize to tray to keep your taskbar clean.
 
-## Screenshots
-
-*(Add screenshots here)*
-
 ## Installation
 
-1. Download the latest release from the [Releases](../../releases) page.
-2. Run `PC Component Monitoring.exe`.
+```bash
+npm install -g https://github.com/ElfredSeow/PC-Monitoring-System
+```
+
+## How to use
+
+Run the following command in your terminal:
+
+```bash
+vitals-dash
+```
 
 ## Building from Source
 
@@ -40,7 +44,3 @@ A lightweight, high-performance Windows desktop application for real-time monito
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-=======
-# PC-Monitoring-System
-A lightweight, high-performance Windows desktop application for real-time monitoring of PC hardware components. It features a modern, dark UI and an optional overlay mode.
->>>>>>> d21e5ed917da0dab7e6545174f78f08d0b175f6d

@@ -59,7 +59,7 @@ namespace MonitorApp
 
         public DashboardForm()
         {
-            Text = "PC Component Monitoring";
+            Text = "VitalsDash";
             MinimumSize = new Size(320, 240);
             Size = new Size(450, 480);
             StartPosition = FormStartPosition.CenterScreen;
@@ -95,7 +95,7 @@ namespace MonitorApp
 
         private void SetupTray()
         {
-            trayIcon.Text = "PC Component Monitoring";
+            trayIcon.Text = "VitalsDash";
             trayIcon.Visible = true;
             
             var bmp = new Bitmap(16, 16);

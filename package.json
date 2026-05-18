@@ -1,10 +1,10 @@
 {
-  "name": "pc-component-monitoring",
+  "name": "vitalsdash",
   "version": "1.0.0",
-  "description": "A lightweight Windows desktop application for real-time monitoring of PC hardware components.",
+  "description": "A high-performance Windows hardware monitor with a sleek overlay mode.",
   "main": "cli.js",
   "bin": {
-    "pc-monitor": "cli.js"
+    "vitals-dash": "cli.js"
   },
   "scripts": {
     "postinstall": "dotnet build -c Release",
