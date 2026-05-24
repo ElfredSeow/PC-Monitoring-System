@@ -329,7 +329,14 @@ namespace MonitorApp
 
         private static double? GetNpuUsage() => TryGetGenericUtilization("NPU");
         private static double? GetCpuTemperature() => GetThermalZoneTemperatures().OrderByDescending(t => t).FirstOrDefaultOrNull();
-        private static double? GetGpuTemperature() { var temps = GetThermalZoneTemperatures(); return temps.Count > 1 ? temps.Max() : (double?)null; }
+        private static double? GetGpuTemperature() 
+        { 
+            var nvidiaTemp = GpuTracker.GetNvidiaGpuTemperature();
+            if (nvidiaTemp.HasValue) return nvidiaTemp;
+            
+            var temps = GetThermalZoneTemperatures(); 
+            return temps.Count > 0 ? temps.Max() : (double?)null; 
+        }
         private static double? GetSystemTemperature() { var temps = GetThermalZoneTemperatures(); return temps.Count > 0 ? temps.Average() : (double?)null; }
 
         private static List<double> GetThermalZoneTemperatures()
@@ -464,11 +471,19 @@ namespace MonitorApp
                 var names = new List<string>();
                 foreach (ManagementObject obj in searcher.Get())
                 {
-                    string n = obj["Name"]?.ToString() ?? "Generic GPU";
+                    string n = obj["Name"]?.ToString() ?? "GPU";
                     n = n.Replace("NVIDIA ", "").Replace("AMD ", "").Replace("Intel(R) ", "").Replace(" Graphics", "");
                     names.Add(n);
                 }
 
+                // If we found only one GPU, map all LUIds to it
+                if (names.Count == 1)
+                {
+                    luidToName[luid] = names[0];
+                    return names[0];
+                }
+
+                // Otherwise use index mapping
                 int index = luidToName.Count;
                 if (names.Count > index)
                 {
@@ -479,6 +494,29 @@ namespace MonitorApp
             catch { }
 
             return "GPU";
+        }
+
+        public static double? GetNvidiaGpuTemperature()
+        {
+            try
+            {
+                var startInfo = new ProcessStartInfo
+                {
+                    FileName = "nvidia-smi",
+                    Arguments = "--query-gpu=temperature.gpu --format=csv,noheader",
+                    RedirectStandardOutput = true,
+                    UseShellExecute = false,
+                    CreateNoWindow = true
+                };
+
+                using var process = Process.Start(startInfo);
+                string output = process?.StandardOutput.ReadToEnd();
+                process?.WaitForExit();
+                if (!string.IsNullOrWhiteSpace(output) && double.TryParse(output.Trim(), out double temp))
+                    return temp;
+            }
+            catch { }
+            return null;
         }
 
         public void Dispose()
